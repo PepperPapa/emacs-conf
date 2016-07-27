@@ -45,6 +45,13 @@
   (interactive)
   (find-file "~/.emacs"))
 
+(defun del-current-line ()
+  "删除当前行"
+  (interactive)
+  (move-beginning-of-line nil)
+  (kill-line nil))
+
 (global-set-key (kbd "C-S-o") 'previous-newline)
 (global-set-key (kbd "C-<return>") 'next-newline)
 (global-set-key (kbd "C-<") 'open-config-file)
+(global-set-key (kbd "C-<delete>") 'del-current-line)
