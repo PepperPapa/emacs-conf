@@ -15,10 +15,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Î¢ÈíÑÅºÚ" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "ÃÂ¢ÃˆÃ­Ã‘Ã…ÂºÃš" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 (put 'narrow-to-region 'disabled nil)
 
-;; windowsÏÂC-SPCÉèÖÃmarkÓëÇĞ»»ÊäÈë·¨³åÍ»£¬ĞŞ¸ÄÎªM-SPCÀ´ÉèÖÃmark 
 (global-unset-key (kbd "C-SPC"))  
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 (require 'package)
@@ -27,28 +26,25 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-; ×Ô¶¨Òåº¯Êı
+; è‡ªå®šä¹‰å‡½æ•°
 (defun previous-newline ()
-  "ÔÚµ±Ç°¹â±êËùÔÚĞĞÖ®Ç°²åÈëÒ»¸öĞÂĞĞ"
+  "åœ¨å½“å‰å…‰æ ‡æ‰€åœ¨è¡Œä¹‹å‰æ’å…¥ä¸€ç©ºè¡Œ"
   (interactive)
-  (previous-line)
-  (move-end-of-line nil)
-  (newline-and-indent))
+  (move-beginning-of-line nil)
+  (newline)
+  (previous-line))
 
 (defun next-newline ()
-  "ÔÚµ±Ç°¹â±êËùÔÚĞĞÖ®ºó²åÈëÒ»¸öĞÂĞĞ"
+  "åœ¨å½“å‰å…‰æ ‡æ‰€åœ¨è¡Œä¹‹åæ’å…¥ä¸€ç©ºè¡Œ"
   (interactive)
   (move-end-of-line nil)
   (newline-and-indent))
 
 (defun open-config-file ()
-  "´ò¿ªhomeÄ¿Â¼ÏÂ.emacsÅäÖÃÎÄ¼ş£¬windowsÏÂÃ¿´Î¶¼ÒªÊäÈëÂ·¾¶£¬²Ù×÷ºÜÂé·³
-   £¬¶¨ÒåÒ»¸öº¯Êı²¢°ó¶¨µ½¿ì½İ¼ü£¬×öµ½¿ìËÙ´ò¿ªÅäÖÃÎÄ¼ş"
+  "æ‰“å¼€homeç›®å½•ä¸‹çš„.emacsæ–‡ä»¶"
   (interactive)
-  (find-file "c:/Users/w17390/AppData/Roaming/.emacs"))
+  (find-file "~/.emacs"))
 
 (global-set-key (kbd "C-S-o") 'previous-newline)
 (global-set-key (kbd "C-<return>") 'next-newline)
 (global-set-key (kbd "C-<") 'open-config-file)
-
-
