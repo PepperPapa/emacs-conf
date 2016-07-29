@@ -8,7 +8,7 @@
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango)))
  '(inhibit-startup-screen t)
- '(scroll-bar-mode nil)
+ '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -26,30 +26,34 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+;;设置宽和高,我的十寸小本是110,33,大家可以调整这个参数来适应自己屏幕大小
+;(set-frame-width (selected-frame) 110)
+(set-frame-height (selected-frame) 23)
+
 ; 自定义函数
-(defun previous-newline ()
+(defun previous-newline (times)
   "在当前光标所在行之前插入一空行"
-  (interactive)
-  (move-beginning-of-line nil)
-  (newline)
+  (interactive "p")
+  (move-beginning-of-line 1)
+  (newline times)
   (previous-line))
 
-(defun next-newline ()
+(defun next-newline (times)
   "在当前光标所在行之后插入一空行"
-  (interactive)
-  (move-end-of-line nil)
-  (newline-and-indent))
+  (interactive "p")
+  (move-end-of-line 1)
+  (newline times))
 
 (defun open-config-file ()
   "打开home目录下的.emacs文件"
   (interactive)
   (find-file "~/.emacs"))
 
-(defun del-current-line ()
+(defun del-current-line (times)
   "删除当前行"
-  (interactive)
-  (move-beginning-of-line nil)
-  (kill-line nil))
+  (interactive "p")
+  (move-beginning-of-line 1)
+  (kill-line times))
 
 (global-set-key (kbd "C-S-o") 'previous-newline)
 (global-set-key (kbd "C-<return>") 'next-newline)
