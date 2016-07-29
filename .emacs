@@ -55,7 +55,20 @@
   (move-beginning-of-line 1)
   (kill-line times))
 
+(defun copy-and-paste-line ()
+  "复制当前行粘贴至下一行"
+  (interactive)
+  (save-excursion
+    (move-beginning-of-line 1)
+    (set-mark-command nil)
+    (move-end-of-line 1)
+    (kill-ring-save (mark) (point))
+    (newline)
+    (yank)))
+  
 (global-set-key (kbd "C-S-o") 'previous-newline)
 (global-set-key (kbd "C-<return>") 'next-newline)
 (global-set-key (kbd "C-<") 'open-config-file)
 (global-set-key (kbd "C-<delete>") 'del-current-line)
+(global-set-key (kbd "C-x c") 'copy-and-paste-line)
+
